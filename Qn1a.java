@@ -28,5 +28,7 @@ public class Qn1a {
         System.out.println(minMeasurements(3, 14)); // Output: 4 (three samples)
     }
 }
-
-//
+// output
+// 2
+// 3
+// 4
