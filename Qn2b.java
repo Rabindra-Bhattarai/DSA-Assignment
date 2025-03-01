@@ -1,4 +1,4 @@
-public class Qn2b { // Class name as requested
+public class Qn2b {
     // Function to find the closest lexicographical pair of points
     public static int[] findClosestPair(int[] x_coords, int[] y_coords) {
         int n = x_coords.length;
@@ -37,3 +37,6 @@ public class Qn2b { // Class name as requested
         System.out.println("Closest pair of points: [" + closestPair[0] + ", " + closestPair[1] + "]");
     }
 }
+
+// Output:-
+// Closest pair of points: [0, 3]
