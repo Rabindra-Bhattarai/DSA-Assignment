@@ -40,6 +40,7 @@ public class Qn2a {
     }
 }
 
-// Output
+// Output for Example 1 is:-
 // Minimum rewards needed: 5
+// Output for example 2 is:-
 // Minimum rewards needed: 4
