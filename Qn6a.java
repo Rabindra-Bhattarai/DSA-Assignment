@@ -111,3 +111,5 @@ public class Qn6a {
         evenThread.start();
     }
 }
+// output
+// 0102030405
