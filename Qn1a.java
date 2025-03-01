@@ -22,10 +22,12 @@ public class Qn1a {
     }
 
     public static void main(String[] args) {
-        // Let's test the function with a few examples.
-        System.out.println(minMeasurements(1, 2)); // Output: 2 (one sample)
-        System.out.println(minMeasurements(2, 6)); // Output: 3 (two samples)
-        System.out.println(minMeasurements(3, 14)); // Output: 4 (three samples)
+        // Test cases
+        System.out.println(minMeasurements(1, 2));
+
+        System.out.println(minMeasurements(2, 6));
+
+        System.out.println(minMeasurements(3, 14));
     }
 }
 // output
