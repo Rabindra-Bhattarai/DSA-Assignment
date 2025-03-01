@@ -85,3 +85,20 @@ class WebCrawler {
         crawler.startCrawling("https://www.wikipedia.org", 10); // Start from Wikipedia, limit to 10 pages
     }
 }
+
+// output
+// Crawling: https://www.wikipedia.org
+// Found URL: http://www.w3.org
+// Found URL: http://www.w3.org
+// Found URL: http://www.w3.org
+// Found URL: http://www.w3.org
+// Found URL: https://wikis.world
+// Found URL: https://upload.wikimedia.org
+// Found URL: https://meta.wikimedia.org
+// Found URL: https://donate.wikimedia.org
+// Found URL: https://en.wikipedia.org
+// Found URL: https://play.google.com
+// Found URL: https://itunes.apple.com
+// Found URL: https://creativecommons.org
+// Found URL: https://foundation.wikimedia.org
+// Found URL: https://foundation.wikimedia.org
