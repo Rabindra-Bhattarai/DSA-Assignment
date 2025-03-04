@@ -7,7 +7,7 @@ public class Qn5 extends JPanel {
     private final ArrayList<Node> nodes = new ArrayList<>();
     private final ArrayList<Edge> edges = new ArrayList<>();
     private final JButton optimizeButton, addEdgeButton;
-    private Node selectedNode1, selectedNode2;
+    // private Node selectedNode1, selectedNode2;
 
     public Qn5() {
         setPreferredSize(new Dimension(600, 400));
