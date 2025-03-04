@@ -1,83 +1,89 @@
+import java.util.*;
+
+class UnionFind {
+    private int[] parent, rank;
+
+    // Constructor to initialize Union-Find data structure
+    public UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        for (int i = 0; i < n; i++) {
+            parent[i] = i; // Each node is initially its own parent
+            rank[i] = 0; // Rank helps balance tree depth
+        }
+    }
+
+    // Find function with path compression for optimization
+    public int find(int x) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]); // Path compression
+        }
+        return parent[x];
+    }
+
+    // Union function to merge two sets
+    public boolean union(int x, int y) {
+        int rootX = find(x);
+        int rootY = find(y);
+
+        // If both nodes are already in the same set, no need to merge
+        if (rootX == rootY)
+            return false;
+
+        // Union by rank: attach smaller tree under the larger one
+        if (rank[rootX] > rank[rootY]) {
+            parent[rootY] = rootX;
+        } else if (rank[rootX] < rank[rootY]) {
+            parent[rootX] = rootY;
+        } else {
+            parent[rootY] = rootX;
+            rank[rootX]++;
+        }
+        return true;
+    }
+}
+
 public class Qn3a {
-    // Helper method to find the parent (root) of a device
-    static int findParent(int device, int[] parent) {
-        if (parent[device] != device) {
-            parent[device] = findParent(parent[device], parent); // Path compression
-        }
-        return parent[device];
-    }
 
-    // Helper method to unite two sets (Union by rank)
-    static void union(int dev1, int dev2, int[] parent, int[] rank) {
-        int root1 = findParent(dev1, parent);
-        int root2 = findParent(dev2, parent);
+    public static int minCostToConnectDevices(int n, int[] modules, int[][] connections) {
+        List<int[]> edges = new ArrayList<>();
 
-        if (root1 != root2) { // Only merge if they are in different sets
-            if (rank[root1] > rank[root2]) {
-                parent[root2] = root1;
-            } else if (rank[root1] < rank[root2]) {
-                parent[root1] = root2;
-            } else {
-                parent[root2] = root1;
-                rank[root1]++;
-            }
-        }
-    }
-
-    // Main method to compute the minimum cost to connect all devices
-    public static int minNetworkCost(int n, int[] modules, int[][] connections) {
-        int totalCost = 0;
-        int[] parent = new int[n + 1]; // Parent array for union-find
-        int[] rank = new int[n + 1]; // Rank array to optimize union-find
-
-        // Step 1: Initially, each device is its own parent
-        for (int i = 1; i <= n; i++) {
-            parent[i] = i;
+        // Step 1: Add module installation costs as virtual edges (0 → i)
+        for (int i = 0; i < n; i++) {
+            edges.add(new int[] { modules[i], 0, i + 1 }); // Virtual node 0 connects to device i+1
         }
 
-        // Step 2: Connect the cheapest module as a starting point
-        int cheapestDevice = 1;
-        for (int i = 2; i <= n; i++) {
-            if (modules[i - 1] < modules[cheapestDevice - 1]) {
-                cheapestDevice = i;
-            }
-        }
-        totalCost += modules[cheapestDevice - 1]; // Install module on the cheapest device
-
-        // Step 3: Sort connections by cost (manual sorting to avoid imports)
-        for (int i = 0; i < connections.length - 1; i++) {
-            for (int j = 0; j < connections.length - i - 1; j++) {
-                if (connections[j][2] > connections[j + 1][2]) {
-                    int[] temp = connections[j];
-                    connections[j] = connections[j + 1];
-                    connections[j + 1] = temp;
-                }
-            }
+        // Step 2: Add given direct connection costs
+        for (int[] conn : connections) {
+            edges.add(new int[] { conn[2], conn[0], conn[1] }); // {cost, device1, device2}
         }
 
-        // Step 4: Use a greedy approach to connect devices at minimum cost
-        for (int i = 0; i < connections.length; i++) {
-            int dev1 = connections[i][0];
-            int dev2 = connections[i][1];
-            int cost = connections[i][2];
+        // Step 3: Sort edges by cost (ascending order)
+        edges.sort(Comparator.comparingInt(a -> a[0]));
 
-            if (findParent(dev1, parent) != findParent(dev2, parent)) {
-                union(dev1, dev2, parent, rank);
-                totalCost += cost; // Add cost to the total
+        // Step 4: Apply Kruskal’s Algorithm using Union-Find
+        UnionFind uf = new UnionFind(n + 1); // +1 for the virtual node
+        int totalCost = 0, edgesUsed = 0;
+
+        for (int[] edge : edges) {
+            int cost = edge[0], u = edge[1], v = edge[2];
+
+            if (uf.union(u, v)) { // Connect only if not already in the same set
+                totalCost += cost;
+                edgesUsed++;
+                if (edgesUsed == n)
+                    break; // Stop once all devices are connected
             }
         }
 
         return totalCost;
     }
 
-    // Example test cases
     public static void main(String[] args) {
-        int n1 = 3;
-        int[] modules1 = { 1, 2, 2 };
-        int[][] connections1 = { { 1, 2, 1 }, { 2, 3, 1 } };
-        System.out.println(minNetworkCost(n1, modules1, connections1)); // Output: 3
+        int n = 3;
+        int[] modules = { 1, 2, 2 };
+        int[][] connections = { { 1, 2, 1 }, { 2, 3, 1 } };
 
+        System.out.println(minCostToConnectDevices(n, modules, connections)); // Output: 3
     }
 }
-// Output
-// 3
