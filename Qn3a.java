@@ -87,3 +87,6 @@ public class Qn3a {
         System.out.println(minCostToConnectDevices(n, modules, connections)); // Output: 3
     }
 }
+
+// Output
+// 3
