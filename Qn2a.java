@@ -1,3 +1,12 @@
+// minRewards determines the smallest number of employee rewards by evaluating ratings.
+//  The initialization distributes one reward to each staff member in the first step. 
+//  The algorithm completes sequential rating array scans which first proceeds from left 
+//  to right for distributing increased rewards to employees who score higher compared 
+//  to their past colleagues followed by a right-to-left scan for revising rewards of 
+//  employees rating above their successive colleagues. The total rewards value is 
+//  calculated by adding all rewards array values after making both pass traversals 
+//  through the array before returning its result.
+
 public class Qn2a { // Class definition
 
     // Function to determine the minimum rewards needed
