@@ -1,3 +1,11 @@
+// The program calculates the minimal measurement count for discovering the highest 
+// secure temperature range using present sample information. The measurement process 
+// demands two examinations if there is one sample at two temperature settings. 
+// The experimental process needs three measurement sets for its execution when 
+// using two sample groups at six temperature points. The program establishes that 
+// four measurements will be necessary to find the highest safe temperature efficiently 
+// when working with three samples and fourteen temperature levels.
+
 public class Qn1a {
 
     public static int minMeasurements(int k, int n) {
