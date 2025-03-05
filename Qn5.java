@@ -1,3 +1,16 @@
+// The Java-based program employs Swing for its GUI to build network topology 
+// designs. Users can visualize network structures within this program through
+//  an interface which enables them to add nodes as devices and create edges that 
+//  determine the connections between these nodes. The program contains MST 
+//  calculation through Kruskal's algorithm function for network optimization 
+//  and displays the Minimum Spanning Tree of the network. The system enables
+//   users to perform shortest-path queries using Dijkstra’s algorithm and therefore
+//    offers optimized network routes based on connection structures. The program 
+//    accepts user interaction through node and edge additions or modifications or 
+//    deletions to serve effectively in network topology simulation tasks and network
+//     optimization needs. The application implements a user-friendly interface 
+//     suitable for individuals who lack experience in network design.
+
 import java.awt.*;
 import java.util.*;
 import java.util.List;
