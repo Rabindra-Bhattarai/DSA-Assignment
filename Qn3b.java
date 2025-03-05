@@ -1,3 +1,9 @@
+// The Tetris game features a 10x20 grid with 30px blocks,
+//  where various shapes with random colors fall from the top.
+//   Players can control the blocks using arrow keys to move, rotate 
+//   and place them on the board. The game continues until a new block
+//    cannot be placed on the board, signaling a game-over condition.
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
