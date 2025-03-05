@@ -1,3 +1,10 @@
+// The program identifies the k-th smallest product from two sorted arrays through 
+// the implementation of a priority queue with min-heap functionality. 
+// The program begins with the minimum product and proceeds to add new 
+// index pairs through duplicate avoidance with a HashSet to grow its size.
+//  The method continues its operations until it discovers and returns the 
+//  k-th smallest product in an efficient manner.
+
 import java.util.*; // Importing necessary libraries for PriorityQueue and HashSet
 
 class Qn1b { // Class definition
@@ -49,3 +56,6 @@ class Qn1b { // Class definition
         System.out.println(kthSmallestProduct(returns1, returns2, k));
     }
 }
+
+// Output
+// 0
