@@ -1,3 +1,8 @@
+// The getTrendingHashtags method uses the Tweet class to track 
+// individual tweet data through user IDs and tweet IDs and dates
+// while processing tweet contents until it generates three trending 
+// hashtags with their occurrence frequency displayed as a table.
+
 public class Qn4a {
 
     // Define the Tweet class to store tweet-related data
