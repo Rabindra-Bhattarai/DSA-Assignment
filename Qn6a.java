@@ -1,3 +1,17 @@
+// Through the defined system ThreadController controls the orderly print
+//  sequence which starts with 0 followed by odd numbers then even numbers 
+//  and ends at 5. Inside the NumberPrinter class there exist three methods 
+//  for handling the print operations of 0 numbers and both even and odd numbers.
+//   ThreadController provides synchronization between methods to print numbers in
+//    the sequence 0 followed by odd then even numbers. The program uses three threads
+//     to execute these tasks whilst wait and notifyAll maintain synchronization 
+//     control that generates the proper sequence order in the results output.
+
+// The code fulfills its objective to create a 0 1 2 3 4 5 number sequence by
+//  correctly synchronizing three threads that handle the printing order of 0, 
+//  odd numbers, and even numbers through proper execution coordination by
+//   synchronization methods.
+
 // Class responsible for printing numbers
 class NumberPrinter {
     // Prints 0
